@@ -32,6 +32,7 @@ public class OrderInputViewTest {
     void validateFormatExceptionTest() {
 
         assertThatThrownBy(() -> {
+
             view.validate("[콜라-10[");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessages.NOT_VALID_FORMAT.getMessage());
