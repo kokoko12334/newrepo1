@@ -1,12 +1,14 @@
 package store.dto;
 
+import java.util.Optional;
+
 public class ProductDTO {
     private String name;
     private int price;
     private int quantity;
-    private PromotionDTO promotion;
+    private Optional<PromotionDTO> promotion;
 
-    public ProductDTO(String name, int price, int quantity, PromotionDTO promotion) {
+    public ProductDTO(String name, int price, int quantity, Optional<PromotionDTO> promotion) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -37,16 +39,17 @@ public class ProductDTO {
         this.quantity = quantity;
     }
 
-    public PromotionDTO getPromotion() {
+    public Optional<PromotionDTO> getPromotion() {
         return promotion;
     }
 
-    public void setPromotion(PromotionDTO promotion) {
+    public void setPromotion(Optional<PromotionDTO> promotion) {
         this.promotion = promotion;
+
     }
 
     public String getCompositeKey() {
-        return name + ":" + promotion.getName();
+        return name + ":" + promotion.map(PromotionDTO::getName).orElse("");
     }
 
     @Override

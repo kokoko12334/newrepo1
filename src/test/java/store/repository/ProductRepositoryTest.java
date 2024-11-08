@@ -5,6 +5,7 @@ import store.dto.ProductDTO;
 import store.dto.PromotionDTO;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.OPTIONAL;
 
 public class ProductRepositoryTest {
 
@@ -18,7 +19,7 @@ public class ProductRepositoryTest {
 
         assertThat(key).isEqualTo(product.getCompositeKey());
         assertThat("콜라").isEqualTo(product.getName());
-        assertThat(product.getPromotion()).isInstanceOf(PromotionDTO.class);
-        assertThat("탄산2+1").isEqualTo(product.getPromotion().getName());
+        assertThat(product.getPromotion()).containsInstanceOf(PromotionDTO.class);
+        assertThat("탄산2+1").isEqualTo(product.getPromotion().get().getName());
     }
 }
