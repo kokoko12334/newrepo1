@@ -4,9 +4,9 @@ public class ProductDTO {
     private String name;
     private int price;
     private int quantity;
-    private ProductDTO promotion;
+    private PromotionDTO promotion;
 
-    public ProductDTO(String name, int price, int quantity, ProductDTO promotion) {
+    public ProductDTO(String name, int price, int quantity, PromotionDTO promotion) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -37,11 +37,11 @@ public class ProductDTO {
         this.quantity = quantity;
     }
 
-    public ProductDTO getPromotion() {
+    public PromotionDTO getPromotion() {
         return promotion;
     }
 
-    public void setPromotion(ProductDTO promotion) {
+    public void setPromotion(PromotionDTO promotion) {
         this.promotion = promotion;
     }
 

@@ -15,12 +15,16 @@ import java.util.Map;
 public class PromotionRepository {
     private final Map<String, PromotionDTO> promotions;
 
+    public PromotionRepository() {
+        this.promotions = loadFile();
+    }
+
     private Map<String, PromotionDTO> loadFile() {
         List<String> lines = FileLoader.load("promotions.md");
         Map<String, PromotionDTO> promotions = new HashMap<>();
 
         for (int i = 1; i < lines.size(); i++) {
-            String [] line = lines.get(i).split(",");
+            String[] line = lines.get(i).split(",");
             PromotionDTO promotion = generatePromotionDTO(line);
             promotions.put(promotion.getName(), promotion);
         }
@@ -35,10 +39,6 @@ public class PromotionRepository {
         LocalDate endDate = LocalDate.parse(line[4]);
 
         return new PromotionDTO(name, buy, get, startDate, endDate);
-    }
-
-    public PromotionRepository() {
-        this.promotions = loadFile();
     }
 
     public void save(PromotionDTO promotion) {
