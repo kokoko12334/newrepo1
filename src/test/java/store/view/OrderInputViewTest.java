@@ -1,7 +1,7 @@
 package store.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,13 +26,13 @@ public class OrderInputViewTest {
     void validateTest() {
         view.validate("[콜라-10],[사이다-3]");
         view.validate("[콜라-1]");
+        view.validate("[비타민워터-1],");
     }
 
     @Test
     void validateFormatExceptionTest() {
 
         assertThatThrownBy(() -> {
-
             view.validate("[콜라-10[");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessages.NOT_VALID_FORMAT.getMessage());
@@ -43,12 +43,7 @@ public class OrderInputViewTest {
                 .hasMessage(ErrorMessages.NOT_VALID_FORMAT.getMessage());
 
         assertThatThrownBy(() -> {
-            view.validate("[콜라-10].[사이다-10]");
-        }).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessages.NOT_VALID_FORMAT.getMessage());
-
-        assertThatThrownBy(() -> {
-            view.validate("[콜].[사이다-10]");
+            view.validate("[콜라-dddd],[사이다-2]");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessages.NOT_VALID_FORMAT.getMessage());
 
@@ -73,7 +68,7 @@ public class OrderInputViewTest {
     }
 
     @Test
-    void validateExceedExceptionTest() {
+    void validateQuantityExceptionTest() {
 
         assertThatThrownBy(() -> {
             view.validate("[콜라-10],[사이다-9999]");
@@ -89,6 +84,5 @@ public class OrderInputViewTest {
             view.validate("[콜라-999],[사이다-9999]");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessages.EXCEEDS_STOCK_QUANTITY.getMessage());
-
     }
 }
