@@ -15,17 +15,14 @@ public class FileLoader {
         List<String> contents = new ArrayList<>();
         try {
             InputStream inputStream = FileLoader.class.getClassLoader().getResourceAsStream(fileName);
-
             if (inputStream == null) {
                 throw new IOException("Resource file not found.");
             }
-
             BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = br.readLine()) != null) {
                 contents.add(line);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
