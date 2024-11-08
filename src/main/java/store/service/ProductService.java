@@ -2,7 +2,6 @@ package store.service;
 
 import store.dto.ProductDTO;
 import store.repository.ProductRepository;
-import store.repository.PromotionRepository;
 
 import java.util.ArrayList;
 import java.util.List;
