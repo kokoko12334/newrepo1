@@ -8,7 +8,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class OrderInputView extends InputView {
-    ProductService productService = SetupService.load();
+    private final ProductService productService;
+
+    public OrderInputView(ProductService productService) {
+        this.productService = productService;
+    }
 
     @Override
     public void validate(String input) {
@@ -58,6 +62,9 @@ public class OrderInputView extends InputView {
     }
 
     private void checkQuantity(List<String> keys, int quantityInt) {
+        if (quantityInt == 0) {
+            throw new IllegalArgumentException(ErrorMessages.NOT_VALID_FORMAT.getMessage());
+        }
         int sum = 0;
         for (String key: keys) {
             sum +=productService.findProductByKey(key).getQuantity();
