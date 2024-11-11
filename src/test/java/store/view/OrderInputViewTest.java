@@ -6,15 +6,18 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import store.error.ErrorMessages;
+import store.service.ProductService;
+import store.service.SetupService;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class OrderInputViewTest {
     OrderInputView view;
-
+    ProductService productService;
     @BeforeEach
     void setUp() {
-        view = new OrderInputView();
+        productService = SetupService.load();
+        view = new OrderInputView(productService);
     }
 
     @AfterEach

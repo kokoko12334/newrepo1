@@ -67,7 +67,7 @@ public class OrderInputView extends InputView {
         }
         int sum = 0;
         for (String key: keys) {
-            sum +=productService.findProductByKey(key).getQuantity();
+            sum += productService.findProductByKey(key).getQuantity();
         }
         if (sum < quantityInt) {
             throw new IllegalArgumentException(ErrorMessages.EXCEEDS_STOCK_QUANTITY.getMessage());
