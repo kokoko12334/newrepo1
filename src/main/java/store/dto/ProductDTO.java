@@ -54,11 +54,14 @@ public class ProductDTO {
 
     @Override
     public String toString() {
-        return "ProductDTO{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                ", promotion=" + promotion +
-                '}';
+        StringBuilder result = new StringBuilder("- " + name + " " + String.format("%,d", price) + "원 ");
+        if (quantity > 0) {
+            result.append(String.format("%,d", quantity)).append("개");
+        } else {
+            result.append("재고 없음");
+        }
+
+        promotion.ifPresent(promo -> result.append(" ").append(promo.getName()));
+        return result.toString();
     }
 }
