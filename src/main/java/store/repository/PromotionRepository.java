@@ -6,6 +6,7 @@ import store.util.FileLoader;
 
 import java.io.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,8 +36,8 @@ public class PromotionRepository {
         String name = line[0];
         int buy = Integer.parseInt(line[1]);
         int get = Integer.parseInt(line[2]);
-        LocalDate startDate = LocalDate.parse(line[3]);
-        LocalDate endDate = LocalDate.parse(line[4]);
+        LocalDateTime startDate = LocalDateTime.parse(line[3]+"T00:00:00");
+        LocalDateTime endDate = LocalDateTime.parse(line[4]+"T00:00:00");
 
         return new PromotionDTO(name, buy, get, startDate, endDate);
     }

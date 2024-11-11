@@ -1,15 +1,16 @@
 package store.dto;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class PromotionDTO {
     private String name;
     private int buy;
     private int get;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
 
-    public PromotionDTO(String name, int buy, int get, LocalDate startDate, LocalDate endDate) {
+    public PromotionDTO(String name, int buy, int get, LocalDateTime startDate, LocalDateTime endDate) {
         this.name = name;
         this.buy = buy;
         this.get = get;
@@ -41,19 +42,19 @@ public class PromotionDTO {
         this.get = get;
     }
 
-    public LocalDate getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 

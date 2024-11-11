@@ -4,6 +4,7 @@ import store.dto.PromotionDTO;
 import store.repository.PromotionRepository;
 
 import java.util.List;
+import java.util.Map;
 
 public class PromotionService {
 
